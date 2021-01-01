@@ -46,13 +46,14 @@ def read_root():
     """
     return HTMLResponse(content=content)
 
+driver = webdriver.Chrome(options=options)
+
 @app.post("/")
 def html2pdf(file: UploadFile = File(...)):
     with tempfile.NamedTemporaryFile(suffix='.html') as temp:
         shutil.copyfileobj(file.file, temp)
         temp.seek(0)
 
-        driver = webdriver.Chrome(options=options)
         driver.get(fr"file://{Path(temp.name).resolve()}")
         result = save_as_pdf(driver, {'landscape': False,'paperWidth':8.27,'paperHeight':11.69})
 
