@@ -58,6 +58,6 @@ def html2pdf(file: UploadFile = File(...)):
         result = save_as_pdf(driver, {'landscape': False,'paperWidth':8.27,'paperHeight':11.69})
 
     if not result:
-        return {"error":"Conversion failed."}
+        return Response({"error": "Conversion failed."}, 500)
 
     return Response(content=result, media_type='application/pdf')
