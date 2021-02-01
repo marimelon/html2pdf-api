@@ -1,5 +1,5 @@
 # html2pdf-api
-This container runs a web service that converts Japanese HTML files to PDF using Google Chrome.
+This container runs a web service that converts Japanese HTML files to PDF using Chromium.
 
 ## Usage
 ### Build
